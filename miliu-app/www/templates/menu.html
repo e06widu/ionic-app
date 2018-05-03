@@ -1,0 +1,66 @@
+<div class="menu-page" ng-controller="MenuController as menu">
+  <ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content drag-content="false" ng-class="isMenuOpen() ? 'menu-open' : ''">
+      <ion-nav-bar>
+        <ion-nav-back-button class="no-text" style="color:#0594d9;" ng-show="$root.showBackIcon">
+        </ion-nav-back-button>
+
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" style="margin-left: 5px" miliu-styles miliu-sty-color="{{$root.menuIconColor =='white'?'white':'#0594d9'}}"
+            menu-toggle="left" ng-show="$root.showMenuIcon">
+          </button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <!-- <ion-pane drawer-menu-content>
+        <ion-nav-view name="menuContent" drag-content="false"></ion-nav-view>
+      </ion-pane> -->
+      <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+
+    <ion-side-menu side="left">
+
+      <ion-content>
+
+        <div class="item item-avatar ">
+          <div class="top-icon">
+            <a menu-close href="#/app/mySpendDashboard">
+              <i class="icon ion-android-home" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="row">
+            <div class="col col-40">
+              <img src="img/profilepic.jpg">
+            </div>
+            <div class="col col-60">
+              <p class="mt-3">Hello,</p>
+              <h2>BUNGA JELITHA</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <ion-list class=" menu-list">
+            <ion-item menu-close ng-repeat="menuItem in menu.menuItems" ng-click="menu.onSelectMenuItem(menuItem)" class="item-list"
+              ng-class="menuItem.isSelected ? 'selected-menu' : ''">
+              <span class="{{menuItem.icon}} {{menuItem.isSelected ? 'active' : ''}}"></span>
+              <span class="title" ng-class="menuItem.isSelected ? 'text-white':''">{{menuItem.title}}</span>
+
+              <span ng-if="menuItem.title.toLowerCase() == 'notifications'" class="badge badge-energized">
+                {{menu.notificationCount}}
+              </span>
+            </ion-item>
+          </ion-list>
+        </div>
+
+
+        <div class="bar bar-footer bar-stable logo">
+          <img src="img/logo.png">
+        </div>
+
+
+      </ion-content>
+    </ion-side-menu>
+
+  </ion-side-menus>
+</div>

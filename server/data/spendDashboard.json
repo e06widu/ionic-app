@@ -1,0 +1,77 @@
+{
+    "accounts": [
+       [ {
+            "id": 1,
+            "accountName": "Checking ACC.",
+            "balance": 5500,
+            "maskedAccNumber": "xxxx0124",
+            "logo":"hsbc-icon",
+            "type": 1
+        },
+        {
+            "id": 2,
+            "accountName": "Credit Card",
+            "balance": 2500,
+            "maskedAccNumber": "xxxx0142",
+            "logo":"ion-closed-captioning",
+            "type": 2
+        }],
+        [{
+            "id": 3,
+            "accountName": "ACC. Abc",
+            "balance": 1000,
+            "maskedAccNumber": "xxxx0235",
+            "logo":"ion-cash",
+            "type": 2
+        },
+        {
+            "id": 4,
+            "accountName": "ACC. Pqu",
+            "balance": 3000,
+            "maskedAccNumber": "xxxx0524",
+            "logo":"ion-outlet",
+            "type": 1
+        }],
+        [{
+            "id": 5,
+            "accountName": "ACC. Xyz",
+            "balance": 250,
+            "maskedAccNumber": "xxxx0612",
+            "logo":"ion-cash",
+            "type": 1
+        }]
+    ],
+    "currentSpend": {
+        "total": 1450,
+        "typicalSpend": 78,
+        "myBudget": 5450,
+        "percentage": 85,
+        "transactions": [
+            {
+                "date": "11/10",
+                "categoryIcon": "fa fa-shopping-bag",
+                "colorCode":"#9b528b",
+                "categoryName": "Hermes",
+                "description": "Shopping",
+                "amount": 1650
+            },
+            {
+                "date": "11/12",
+                "categoryIcon": "fa fa-shopping-bag",
+                "colorCode":"#9b528b",
+                "categoryName": "Louis Vuitton",
+                "description": "Shopping",
+                "amount": 750
+            },
+            {
+                "date": "11/10",
+                "categoryIcon": "fa fa-cutlery",
+                "colorCode":"#ef3a3a",
+                "categoryName": "Sushi Tei",
+                "description": "Food",
+                "amount": 375
+            }
+        ]
+    },
+    "isSetBudget": true
+}

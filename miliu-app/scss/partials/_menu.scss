@@ -1,0 +1,105 @@
+  //menu page styles
+  .menu-page{
+
+    .menu-open {
+        // transform: translate3d(0px, 0px, 0px) !important;
+        // z-index: -1;
+        transition: opacity 300ms ease-in-out;
+        -webkit-transition: opacity 300ms ease-in-out;
+        background-color: rgb(165, 165, 165);
+        opacity: 0.4;
+      }
+    
+
+    ion-content{
+      .scroll{
+        //overflow: hidden;
+      
+    .item-avatar{
+      padding: 0 !important;
+      height: 140px;
+      font-weight: 900;  
+      border: none;
+      .top-icon{
+        .icon{
+          font-size: 30px;
+          float: right;
+          margin: 10px 20px 0 0;
+          color: $dark;
+        }
+      }
+      .row{
+        padding: 0 20px;
+        .col-40{
+          padding: 0;
+          img{
+            height: 80px;
+            width: 80px;
+            border: 5px solid $blue;
+            border-radius: 50%;
+          }
+        }
+        .col-60{
+          padding: 0;
+          p{
+            font-size: 16px;
+            color: $light-gray;
+            font-weight: 500 !important;
+          }
+          h2{
+            font-weight: 700;
+            line-height: 28px;
+            text-transform: uppercase
+            
+          }
+        }
+      }
+    }
+    .container{
+      // padding-bottom: 50px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      .menu-list{
+        margin-left: 20px;
+        // padding-bottom: 50px;
+        .item-list{
+          border: none;
+          color: $dark;
+          font-weight: 900 !important;
+          font-size: 16px;
+          text-transform: capitalize;
+          height: 50px;
+          padding: 15px !important;
+
+          .title{
+            margin-left:60px;   
+          }
+
+          .badge{
+            border-radius: 50%;
+            background-color: $orange;
+          }
+        }
+        } 
+    }
+        .logo{
+          height: 75px;
+         img{
+           height: 60px;
+           position: relative;
+           top: 5px;
+           margin-left: 15px;
+         }
+        } 
+
+        .selected-menu{
+          background: $blue !important;
+      }
+      
+    }
+  }
+}
+
+
+
+  

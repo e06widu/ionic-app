@@ -1,0 +1,92 @@
+<ion-view class="goals-page">
+  <ion-content class="page-top" scroll="false">
+    <h2 class="m-0">Goals</h2>
+
+    <div class="goal-list-container">
+      <ion-list>
+        <ion-item ng-repeat="goal in vm.goals" class="goal-item" can-swipe="true" miliu-tap-to-swipe stop-swipe="{{vm.stopSwipe}}">
+
+          <div class="card-list">
+            <div class="row">
+              <div class="col col-95" ng-click="vm.stopSwipeOptionButton(true)">
+                <div class="card">
+                  <div class="row">
+                    <div class="col col-30">
+                      <div class="car-box {{goal.iconBg}}" >
+                        <img src="{{goal.icon}}">
+                      </div>
+                    </div>
+                    <div class="col col-70">
+                      <div class="row pt-2">
+                        <div class="col">
+                          <p class="title pl-2">{{goal.name}}</p>
+                          <p class="content pl-2 pb-2">By {{goal.maturityDate | date:'MMM d, yyyy'}}</p>
+                        </div>
+                        <div class="col">
+                          <p class="value pr-2">
+                            <sup>$</sup>{{goal.savedAmount| number:0}}</p>
+                        </div>
+                      </div>
+                      <div class="row px-2 py-2">
+                        <div class="gray-bg">
+                          <div class="loader" ng-style="{width:'{{goal.savedPercentage}}%',background:'{{goal.color}}'}">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row px-2 pt-1">
+                        <div class="col">
+                          <p class="content">
+                            {{goal.savedPercentage}}%
+                          </p>
+                        </div>
+                        <div class="col">
+                          <p class="content-right">
+                            ${{goal.maturityAmount | number:0}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col col-5" ng-click="vm.stopSwipeOptionButton(false)">
+                <div class="dots">
+                  <i class="icon ion-android-more-vertical" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="goals-slide">
+
+            <ion-option-button class="slide">
+              <p class="icon icon-blue ion-social-facebook"></p>
+              <p class="icon-title title-blue pl-1">Share on Facebook</p>
+            </ion-option-button>
+
+            <ion-option-button class="slide">
+              <p class="icon icon-red ion-power"></p>
+              <p class="icon-title title-red pl-1">Transfer & Close </p>
+            </ion-option-button>
+
+            <ion-option-button class="slide" >
+              <p class="icon icon-gray ion-plus-round"></p>
+              <p class="icon-title pl-1"> Add Funds</p>
+            </ion-option-button>
+
+          </div>
+
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="bottom-bar">
+        <div class="icon-circle p-1 ">
+          <img src="img/icons8-plus-math-white.png" class="ion-plus"
+              ng-click="vm.onSetGoal('app.myBudget')" >
+        </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

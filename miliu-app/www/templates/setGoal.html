@@ -1,0 +1,183 @@
+<ion-view class="setGoal-page">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" style="color:#0594d9" ng-click="vm.onCancel()">
+            <strong>Cancel</strong>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" style="color:#0594d9" ng-click="vm.onSave()">
+            <strong>Save</strong>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="page-top">
+        <h2 class="mt-3 mb-3 pl-2">Set Goal</h2>
+        <form name="goalForm" novalidate>
+
+            <div class="budget">
+                <p class="title">Name</p>
+                <p class="content pl-3">
+                    <input name="goalName" ng-model="vm.goalName" type="text" required>
+                </p>
+                <span class="px-3" style="color:red" ng-show="vm.submitted && goalForm.goalName.$invalid">Name is required</span>
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="budget" on-tap="vm.isOpenCategory = !vm.isOpenCategory">
+                <p class="title">Category</p>
+                <span class="sub-title">
+                    {{vm.selectedCategory.name}}
+                </span>
+                <span class="drop-down-icon">
+                    <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenCategory, 'ion-chevron-up': vm.isOpenCategory }" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="line" ng-show="vm.isOpenCategory"></div>
+
+            <div class="list" ng-show="vm.isOpenCategory">
+                <li class="item {{(category.id == vm.selectedCategory.id) ? 'active' : ''}}" ng-repeat="category in vm.categories" ng-click="vm.selectedCategory = category;vm.isOpenCategory = false ">
+                    {{category.name}}
+                    <span class="item-icon" ng-if="category.id == vm.selectedCategory.id ">
+                        <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="budget">
+                <p class="title">Amount</p>
+                <div class="row  pl-3">
+                    <div class="col-5 p-0 mr-1 pt-2">
+                        <sup>$</sup>
+                    </div>
+                    <div class="col-90">
+                        <input class="text-select" name="goalAmount" ng-model="vm.goalAmount" type="number" ng-change="vm.onChangeGoalAmount()" required>
+                    </div>
+                </div>
+                <span class="px-3" style="color:red" ng-show="vm.submitted && goalForm.goalAmount.$invalid">Amount is required</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="budget" ng-click="vm.isOpenStartDate = !vm.isOpenStartDate">
+                <p class="title">Start Date</p>
+                <span class="sub-title">
+                    {{getStartDate() | date:'MMM dd, yyyy'}}
+                </span>
+                <span class="drop-down-icon">
+                    <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenStartDate, 'ion-chevron-up': vm.isOpenStartDate }" aria-hidden="true"
+                        aria-hidden="true"></i>
+                </span>
+                <div class="list" ng-show="vm.isOpenStartDate">
+                        <ion-scroll direction="y" overflow-scroll="false" style="margin-top: 0px">
+                    <proton:multi-list-picker ng-model="startDate" attachment="{{attachment}}" bind-html="{{bindHtml}}" done="vm.calNumberOfContribution()">
+                        <proton:multi-list-picker-list alias="year" static="false" source="getYears()">
+                        </proton:multi-list-picker-list>
+                        <proton:multi-list-picker-list alias="month" cycle="true" strict-matching="true">
+                            <proton:multi-list-picker-list-item value="1">
+                                <span class="red">January</span>
+                            </proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="2">February</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="3">March</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="4">April</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="5">May</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="6">June</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="7">July</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="8">August</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="9">September</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="10">October</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="11">November</proton:multi-list-picker-list-item>
+                            <proton:multi-list-picker-list-item value="12">December</proton:multi-list-picker-list-item>
+                        </proton:multi-list-picker-list>
+                        <proton:multi-list-picker-list alias="day" cycle="true" source="getDays(model.year, model.month)" strict-matching="true">
+                        </proton:multi-list-picker-list>
+                    </proton:multi-list-picker>
+                    </ion-scroll>
+                </div>
+
+            </div>
+
+            <div class="line"></div>
+
+            <div class="budget">
+                <!-- <p class="title">Start Date</p> -->
+                <div class="row ">
+                    <div class="col ">
+                        <div ng-click="vm.openMonthPicker()">
+                            <div class="title pt-1 pl-1">
+                                COMPLETION MONTH
+                            </div>
+                            <span class="pl-1 content">
+
+                                {{vm.selectedMonth.name}}
+                            </span>
+                            <span class="icon-right">
+                                <i class="icon ion-chevron-down" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div ng-click="vm.openMonthPicker()">
+                            <div class="title pt-1">
+                                COMPLETION YEAR
+                            </div>
+                            <span class="pl-2 content">
+
+                                {{vm.selectedYear.name}}
+                            </span>
+                            <span class="icon-right">
+                                <i class="icon ion-chevron-down pr-0 mr-0" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="budget" on-tap="vm.isOpenFundingAccount = !vm.isOpenFundingAccount">
+                <p class="title">Funding Account</p>
+                <span class="sub-title">
+                    {{vm.selectedFundingAccount.name}}
+                </span>
+                <span class="drop-down-icon">
+                    <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenFundingAccount, 'ion-chevron-up': vm.isOpenFundingAccount }" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="line" ng-show="vm.isOpenFundingAccount"></div>
+
+            <div class="list" ng-show="vm.isOpenFundingAccount">
+                <li class="item {{(fundingAccount.id == vm.selectedFundingAccount.id) ? 'active' : ''}}" ng-repeat="fundingAccount in vm.fundingAccounts"
+                    ng-click="vm.selectedFundingAccount = fundingAccount;vm.isOpenFundingAccount = false ">
+                    {{fundingAccount.name}}
+                    <span class="item-icon" ng-if="fundingAccount.id == vm.selectedFundingAccount.id ">
+                        <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </div>
+
+            <div class="line"></div>
+
+        </form>
+    </ion-content>
+    <ion-footer-bar align-title="center">
+        <div class="buttons">
+            <button class="button left">
+                <span>
+                    Monthly Contribution
+                </span>
+            </button>
+        </div>
+        <h1 class="title"></h1>
+        <div class="buttons">
+            <button class="button right">
+                <span>
+                    <sup>$</sup>{{vm.monthlyContribution | number:0}}</button>
+            </span>
+        </div>
+    </ion-footer-bar>
+</ion-view>

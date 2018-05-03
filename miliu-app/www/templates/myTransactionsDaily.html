@@ -1,0 +1,87 @@
+<ion-view class="myTransactions-page" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <button on-tap="vm.navigate('app.calendar')" class="button button-clear button-positive" style="color:#0594d9;">
+            <i class="icon ion-calendar" aria-hidden="true"></i>
+        </button>
+        <button on-tap="vm.navigate('app.filter')" class="button button-clear button-positive" style="color:#0594d9;">
+            <i class="icon ion-levels" aria-hidden="true"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-title class="title">
+        <span style="font-size:12px;">
+            <i class="icon ion-record gray-text" aria-hidden="true"></i>
+            <i class="icon ion-record blue-text" style="color:#0594d9;"  aria-hidden="true"></i>
+        </span>
+    </ion-nav-title>
+    <ion-content class="page-top" on-swipe-right="vm.onSwipeRight()">
+        <div class="row">
+            <h2>My Transactions</h2>
+            <p class="date pt-5 pl-2">{{vm.timePeriod}}</p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card card-red" ng-click="vm.toggleTransactionType('Spend')"ng-class="{enabled: !vm.hideSpendTransactions}">
+                    <div class="row">
+                        <div class="col col-80">
+                            <p class="title">Total Spend</p>
+                            <p class="value">
+                                <sup>$</sup>{{ vm.totalSpend | number:0}}</p>
+                        </div>
+                        <div class="col col-20">
+                            <!-- <i class="icon  ion-android-cart"></i> -->
+                            <img src="img/buying{{ vm.hideSpendTransactions ? '' : '-white'}}.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-blue" ng-click="vm.toggleTransactionType('Income')" ng-class="{enabled: !vm.hideIncomeTransactions}">
+                    <div class="row">
+                        <div class="col col-80">
+                            <p class="title">Total Income</p>
+                            <p class="value">
+                                <sup>$</sup>{{ vm.totalIncome | number:0}}</p>
+                        </div>
+                        <div class="col col-20">
+                            <!-- <i class="icon  ion-cash"></i> -->
+                            <img src="img/money{{ vm.hideIncomeTransactions ? '' : '-white'}}.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-data">
+
+            <div class="list" ng-repeat="myTransaction in vm.myTransactions" ng-if="!myTransaction.hidden">
+                <p class="date pl-2">{{myTransaction.date}}</p>
+                <ion-list class="item pt-0" ng-repeat="item in myTransaction.items" show-delete="false" show-reorder="false" can-swipe="true"
+                          ng-if="!vm['hide' + item.type + 'Transactions']">
+                    <ion-item class="p-0">
+                        <div class="row py-0">
+                            <div class="col col-20 pl-3">
+                                <div class="icon-box" ng-style="{background:'{{item.colorCode}}'}">
+                                    <i class="icon {{item.icon}}" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col col-60">
+                                <p class="title">{{item.categoryname}}</p>
+                                <p class="content">{{item.name}}</p>
+                            </div>
+                            <div class="col col-20">
+                                <p class="value pr-0 pt-1" ng-style="item.categoryname == 'Other income' ?{color:'#11c1f3'} :  {color:'#ef473a'}">${{item.amount}}</p>
+                            </div>
+                        </div>
+                        <ion-option-button class="mt-1 retag-detail">
+                            <p class="icon-title pl-1">Retag</p>
+                        </ion-option-button>
+                        <ion-option-button class="mt-1 retag-detail">
+                            <p class="icon-title pl-1 bold-text">Detail</p>
+                        </ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,99 @@
+{
+    "budgetHeads": [
+        {
+            "id": 1,
+            "name": "Overall",
+            "categories": []
+        },
+        {
+            "id": 2,
+            "name": "My Income",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "My Income Cat1"
+                },
+                {
+                    "id": 2,
+                    "name": "My Income Cat2"
+                },
+                {
+                    "id": 3,
+                    "name": "My Income Cat2"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "My Spend",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "Consolidated"
+                },
+                {
+                    "id": 2,
+                    "name": "My Spend Cat2"
+                },
+                {
+                    "id": 3,
+                    "name": "My Spend Cat3"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "My Borrowings",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "My Borrowings Cat1"
+                },
+                {
+                    "id": 2,
+                    "name": "My Borrowings Cat2"
+                },
+                {
+                    "id": 3,
+                    "name": "My Borrowings Cat4"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "My Growth",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "My Growth Cat1"
+                },
+                {
+                    "id": 2,
+                    "name": "My Growth Cat2"
+                },
+                {
+                    "id": 3,
+                    "name": "My Growth Cat4"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "My Protection",
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "My Protection Cat1"
+                },
+                {
+                    "id": 2,
+                    "name": "My Protection Cat2"
+                },
+                {
+                    "id": 3,
+                    "name": "My Protection Cat4"
+                }
+            ]
+        }
+    ]
+}

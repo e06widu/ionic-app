@@ -1,0 +1,164 @@
+<ion-view class="calandar-page">
+    <ion-nav-back-button class="button-positive">
+    </ion-nav-back-button>
+
+
+    <ion-content class="page-top" on-swipe-right="vm.onSwipeRight()">
+        <h2>{{ vm.currentDate.format('MMMM') }} {{ vm.currentDate.format('YYYY') }}</h2>
+
+        <div class="row mt-2 mb-4">
+            <div class="col">
+                <div class="red-box ml-3 mr-2">
+                    <div class="row">
+                        <div class="content-price">
+
+                            <p class="title mb-1 ">total spend</p>
+                            <p class="value mb-1">
+                                <sup>$</sup>5,000</p>
+
+                        </div>
+                        <div class="icon-right mt-2">
+                            <img class="" src="img/icons8-buying-50-white.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="blue-box ml-2 mr-3">
+                    <div class="row">
+                        <div class="content-price">
+
+                            <p class="title mb-1">total income</p>
+                            <p class="value mb-1">
+                                <sup>$</sup>10,500</p>
+
+                        </div>
+                        <div class="icon-right mt-2">
+                            <img src="img/icons8-money-50-white.png">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row navbar">
+            <div class="col px-3" on-tap="vm.prevMonth()">
+                <
+            </div>
+            <div class="col px-3 align-right" on-tap="vm.nextMonth()">
+                >
+            </div>
+        </div>
+        <div class="calendar" style="padding-right:3%;padding-left:3%" on-swipe-up="vm.nextMonth()" on-swipe-down="vm.prevMonth()">
+
+            <div class="month-grid">
+                <div class="day-names">
+                    <div ng-repeat="day in vm.dayNames" class="day-name">
+                        {{ day.name }}
+                    </div>
+                </div>
+                <h4>
+                    <b>{{ vm.currentDate.format('MMMM') }}</b>
+                </h4>
+                <!-- <ion-scroll direction="y" overflow-scroll="false"> -->
+                <div class="weeks">
+                    <div ng-repeat=" week in vm.weeks" class="week">
+                        <div ng-repeat=" day in week" class="custom-date" ng-class="{'day-selected': day == vm.selectedDate}">
+                            <div class="week-date disabled" ng-if="!vm.isSelectedMonth(day.mDate)">
+                                <div class="date-text">
+                                    <!-- <div>{{ day.mDate.date() }}</div> -->
+                                </div>
+                            </div>
+                            <div ng-if="day.events">
+                                <div>
+                                    <div class="week-date enabled" ng-if="vm.isSelectedMonth(day.mDate)" ng-click="vm.selectDate(day)">
+                                        <div class="date-text flex-row">
+                                            <div class="text-left">{{ day.mDate.date() }}</div>
+                                            <div ng-repeat=" event in day.events">
+                                                <div class="{{ event.type == 'INCOME' ? 'income' : 'spend'}}">
+                                                    ${{event.value}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="!day.events">
+                                <div class="week-date enabled" ng-if="vm.isSelectedMonth(day.mDate)" ng-click="vm.selectDate(day)" ng-class="{ today: day.today, selected: day.selected }">
+                                    <span class="date-text">{{ day.mDate.date() }}</span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- </ion-scroll> -->
+                <h4>
+                    <b>{{ vm.nextMonthName.format('MMMM') }}</b>
+                </h4>
+                <div class="weeks">
+                    <div class="week">
+                        <div ng-repeat=" day in vm.lastWeek" class="custom-date">
+                            <div class="week-date " ng-if="!vm.isSelectedMonth(day.mDate)">
+                                <div class="date-text">
+                                    <div>{{ day.mDate.date() }}</div>
+                                </div>
+                            </div>
+                            <div class="week-date " ng-if="vm.isSelectedMonth(day.mDate)">
+                                <div class="date-text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+    <script id="calandarDetail.html" type="text/ng-template">
+        <ion-modal-view class="calendar-popup">
+            <ion-content>
+                <div class="cal-popup m-3">
+                   <div class="transactions" ng-repeat="item in vm.incomes">
+                        <div class="row pt-2">
+                            <div class="col col-15">
+                                <div class="icon-box light-text" ng-style="{background:'{{item.color}}'}">
+                                    <i class="icon {{item.icon}}" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col col-70 pl-2">
+                                <p class="title mb-0">{{item.name}}</h3>
+                                <p class="sub-title">{{item.description}}</p>
+                            </div>
+                            <div class="col col-15">
+                                <p class="value blue-text">${{item.value | number : 0}}</p>
+                            </div>
+                        </div>
+                        <div class="bottom-border"></div>
+                        
+                    </div>
+                   <div class="transactions" ng-repeat="item in vm.spends">
+                        <div class="row pt-2">
+                            <div class="col col-15">
+                                <div class="icon-box light-text" ng-style="{background:'{{item.color}}'}">
+                                    <i class="icon {{item.icon}}" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col col-70 pl-2">
+                                <p class="title mb-0">{{item.name}}</h3>
+                                <p class="sub-title">{{item.description}}</p>
+                            </div>
+                            <div class="col col-15">
+                                <p class="value red-text">${{item.value | number : 0}}</p>
+                            </div>
+                        </div>
+                        <div class="bottom-border"></div>
+                        
+                    </div>
+                </div>
+            </ion-content>
+          </ion-modal-view>
+      </script>
+</ion-view>

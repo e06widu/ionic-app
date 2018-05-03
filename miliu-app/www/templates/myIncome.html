@@ -1,0 +1,49 @@
+<ion-view class="myIncome-page p-3">
+    <ion-content class="page-top">
+        <div class="row mb-3">
+            <h2 class="bold-text">My Income</h2>
+            <p class="date pt-5 pl-2">{{ vm.displayPeriodOfTime }}</p>
+        </div>
+
+        <div class="row mb-3">
+            <div class="income-box mx-2">
+                <span>
+                    <img src="img/money-white.png">
+                </span>
+                <span class="title pt-1">Total Income</span>
+                <span class="value pt-1">
+                    <sup>$</sup>{{vm.totalIncome | number:0}}</span>
+            </div>
+        </div>
+
+
+        <div class="bar-chart" style="padding-right:8%; padding-left:8%;">
+            <!-- <ion-scroll direction="x" overflow-scroll="false"> -->
+                <div id="agcMyIncomeDiv" google-chart chart="vm.myChartObject" on-swipe-right="vm.onChartSwipeRight()" on-swipe-left="vm.onChartSwipeLeft()"
+                agc-on-mouseout="vm.agcOnMouseout()" agc-on-mouseover="vm.agcOnMouseover()"
+                agc-on-select="vm.agcOnSelect()" agc-on-ready="vm.agcOnReady()"></div>
+            <!-- </ion-scroll> -->
+
+            <div class="bottom-icons">
+                <div class="row p-2">
+                    <div class="col">
+                        <div class="icon-box">
+                            <i class="icon ion-cash" aria-hidden="true"></i>
+                        </div>
+                        <p class="title">salary</p>
+                    </div>
+                    <div class="col">
+                        <div class="icon-box other">
+                            <i class="icon ion-ios-more" aria-hidden="true"></i>
+                        </div>
+                        <p class="title">other income</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-view>

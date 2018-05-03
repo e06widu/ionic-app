@@ -1,0 +1,187 @@
+<ion-view class="mySpendDb-page">
+    <ion-content class="page-top">
+        <h2>My Spend Dashboard</h2>
+        <ion-slide-box class="pb-6" ng-if="vm.dashBoardData.accounts.length > 0">
+            <ion-slide ng-repeat="items in vm.dashBoardData.accounts">
+                <div class="row">
+                    <div ng-repeat="account in items" class="col col-50">
+                        <div class="{{account.type == '1' ? 'box-green':'box-orange'}} pl-3">
+                            <h4>{{account.accountName}}</h4>
+                            <p>{{account.maskedAccNumber}}</p>
+                            <div class="row">
+                                <div class="col">
+                                    <i class="icon {{account.logo}}"></i>
+                                </div>
+                                <div class="col">
+                                    <h3>
+                                        <sup>$</sup>{{account.balance| number:0}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="box-blue {{vm.batteryLevel <= 25 ? 'box-red' : ''}} mt-0"
+        >
+            <div class="upper-row">
+                <div class="row">
+                    <div class="col">
+                        <h4>MY CURRENT SPEND</h4>
+                    </div>
+                    <div class="col">
+                        <div on-tap="vm.navigate('app.myTransactions')"  class="icon-box">
+                            <i class="icon fa fa-list-ul" style ="color: {{vm.batteryLevel <= 25 ? '#fc4949' : ''}}" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bot-row">
+                <div class="row">
+                    <div class="col p-2">
+                        <!-- <i class="icon fa fa-cart-arrow-down"></i> -->
+                        <img src="img/buying-white.png" class="icon">
+                    </div>
+                    <div class="col">
+                        <h3>
+                            <sup>$</sup>{{vm.dashBoardData.currentSpend.total| number:0}}</h3>
+                        <p>Typical Spend
+                            <span>${{vm.dashBoardData.currentSpend.typicalSpend}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card m-3" ng-if="!vm.dashBoardData.isSetBudget">
+            <div class="px-4">
+                <i class="icon fa fa-money pt-4 mb-0"></i>
+                <p>Set up your budget to get a budget summary view here.</p>
+            </div>
+            <button class="button button-blue mb-5" on-tap="vm.navigate('app.myBudget')">
+                Set My Budget
+            </button>
+        </div>
+        <!-- battery level of the spend -->
+        <div ng-if="vm.dashBoardData.isSetBudget">
+            <!-- out of budget message -->
+            <div class="message" ng-if="vm.dashBoardData.currentSpend.percentage <= 25 && vm.dashBoardData.currentSpend.percentage >= 0">
+                <div class="card m-3">
+                    <div class="row">
+                        <div class="col col-20">
+                            <img src="img/alert.png">
+                        </div>
+                        <div class="col col-80">
+                            <p> You are likely to go out of budget this month.
+                                <span on-tap="vm.openTellMeWhy()">Tell me why?</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="message" ng-if="vm.dashBoardData.currentSpend.percentage < 0">
+                <div class="card m-3">
+                    <div class="row">
+                        <div class="col col-20">
+                            <img src="img/alert.png">
+                        </div>
+                        <div class="col col-80">
+                            <p> You are out of budget this month.
+                                <span on-tap="vm.openTellMeWhy()">Tell me why?</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="battery" on-tap="vm.navigate('app.myBudget')">
+                <div class="battery-level" ng-if="vm.dashBoardData.currentSpend">
+                    <div class="row p-0 m-0">
+                        <span miliu-styles miliu-sty-width="{{100 - vm.batteryLevel }}%" style="background:white; height:100%">
+
+                        </span>
+                        <span miliu-styles class="box-battery {{ vm.batteryLevel > 25 ? 'box-blue-batery' : vm.batteryLevel > 0 ? 'box-red-batery' : 'white-box-batery'  }}"
+                              miliu-sty-width="{{vm.batteryLevel}}%" style="float:right;">
+                            <p miliu-styles miliu-sty-color="{{vm.batteryLevel == 0 ? '#fc4949' : ''}}">{{vm.dashBoardData.currentSpend.percentage}}%</p>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- bottom value block when out of the budget -->
+
+            <div class="bottom-card">
+                <div class="card mx-3 py-4">
+                    <div class="row" on-tap="vm.navigate('app.myBudget')">
+                        <div class="col p-0 my-3">
+                            <p class="title pb-2">My Budget</p>
+                            <p class="value pb-2"><span>$</span>{{vm.dashBoardData.currentSpend.myBudget | number:0}}</p>
+                        </div>
+                        <div class="col p-0 my-3" ng-if="vm.dashBoardData.currentSpend.percentage >= 0">
+                            <p class="title pb-2">Remaining</p>
+                            <p class="value pb-2"><span>$</span>{{(vm.dashBoardData.currentSpend.myBudget * (vm.dashBoardData.currentSpend.percentage)) / 100
+                                | number:0}}</p>
+                        </div>
+                        <div class="col p-0 my-3" ng-if="vm.dashBoardData.currentSpend.percentage < 0">
+                            <p class="title pb-2">Over Budget By</p>
+                            <p class="value pb-2" style="color:#fc4949"><span>$</span>{{(vm.dashBoardData.currentSpend.myBudget * (vm.dashBoardData.currentSpend.percentage * -1)) / 100 | number:0}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="change-scenario-buttons">
+            <button class="button" ng-click="vm.changeSpends('NB')">No Budget</button>
+            <button class="button"  ng-click="vm.changeSpends('BN')">Budget Exceeded</button>
+            <button class="button" ng-click="vm.changeSpends('BLE')">Likely To Exceed</button>
+            <button class="button" ng-click="vm.changeSpends('BE')">Budget Exceeded</button>
+        </div>
+    </ion-content>
+    <script id="modal.html" type="text/ng-template">
+        <ion-modal-view  class="mySpendDb-popup">
+
+              <div class="button button-clear" style="z-index:1" ng-click="closeModal()">
+                    <img src="img/thick-close.png">
+              </div>
+
+            <ion-content>
+                <div class="whyRed-popup">
+                    <h3 class="">Why i am red?</h3>
+                    <p class="descr">Lorem ipsum dolor sit amet, consecteture adipiscing dlit, sed diam nonummy nibh.</p>
+                    <div class="transactions">
+                        <h4 class="py-1">{{vm.dashBoardData.currentSpend.transactions.length}} largest transactions</h4>
+
+                        <div class="row pt-2" ng-repeat="transaction in vm.dashBoardData.currentSpend.transactions">
+
+                            <div class="col col-15">
+                                <p class="date">{{transaction.date}}</p>
+                            </div>
+                            <div class="col col-15">
+
+                                    <div class="icon-box" ng-style="{background:'{{transaction.colorCode}}'}">
+                                            <i class="icon {{transaction.categoryIcon}}" aria-hidden="true"></i>
+                                    </div>
+
+                            </div>
+                            <div class="col col-50 pl-2">
+                                <p class="title mb-0">{{transaction.categoryName}}</h3>
+                                <p class="sub-title">{{transaction.description}}</p>
+                            </div>
+                            <div class="col col-20">
+                                <p class="value">${{transaction.amount | number:0}}</p>
+
+                            </div>
+
+
+                            <div class="bottom-border"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </ion-content>
+          </ion-modal-view>
+      </script>
+</ion-view>

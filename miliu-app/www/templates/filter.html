@@ -1,0 +1,134 @@
+<ion-view class="filter-page">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" style="color:#0594d9" ng-click="vm.applyFilter()">
+            <strong> Apply</strong>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="page-top">
+
+        <h2 class="mt-3 pt-0">Filter</h2>
+
+        <div class="account" ng-click="vm.isOpenAccouts = !vm.isOpenAccouts">
+            <p class="title">Account</p>
+            <span class="sub-title">{{vm.selectedAccount.name}}</span>
+            <span class="drop-down-icon">
+                <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenAccouts, 'ion-chevron-up': vm.isOpenAccouts }" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="list" ng-if="vm.isOpenAccouts">
+            <li class="item {{(account.id == vm.selectedAccount.id) ? 'active' : ''}}" ng-repeat="account in vm.accounts" ng-click="vm.selectedAccount = account; vm.isOpenAccouts = false ">
+                {{account.name}}
+                <span class="item-icon" ng-if="account.id == vm.selectedAccount.id ">
+                    <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+                </span>
+            </li>
+        </div>
+
+        <div class="period" ng-click="vm.isOpenPeriodOfTimes = !vm.isOpenPeriodOfTimes">
+            <p class="title">Period of time</p>
+            <span class="sub-title">{{vm.selectedPeriodOfTime.name}}</span>
+            <span class="drop-down-icon">
+                <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenPeriodOfTimes, 'ion-chevron-up': vm.isOpenPeriodOfTimes }" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="list" ng-if="vm.isOpenPeriodOfTimes">
+            <li class="item {{(periodOfTime.id == vm.selectedPeriodOfTime.id) ? 'active' : ''}}" ng-repeat="periodOfTime in vm.periodOfTimes"
+                ng-click="vm.selectedPeriodOfTime = periodOfTime; vm.isOpenPeriodOfTimes = false; vm.onSelectPeriodOfTime(periodOfTime) ">
+                {{periodOfTime.name}}
+                <span class="item-icon" ng-if="periodOfTime.id == vm.selectedPeriodOfTime.id ">
+                    <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+                </span>
+            </li>
+
+        </div>
+
+
+
+
+    </ion-content>
+    <script id="customPeriodOfTimeModal.html" type="text/ng-template">
+        <ion-modal-view class="mySpendDb-popup" style="width: 92%; height: 40%; top: 50%; left: 3%; right: 5%; bottom: 5%;">
+            <ion-content>
+                <div class="filter-popup m-4">
+                        <div class="my-2">
+                            <span class="title">START DATE</span>
+                            <span style="color:gray;float:right;" ng-click="displayStartDate()"> {{getStartDate() | date:'MMM dd, yyyy'}} </span>
+                            <br/>
+                            <ion-scroll direction="y" overflow-scroll="false" style="margin-top: 0px">
+                            <proton:multi-list-picker ng-model="startDate" attachment="{{attachment}}" bind-html="{{bindHtml}}" done="showingStDate = false"
+                                                    ng-show="showingStDate">
+                                <proton:multi-list-picker-list alias="year" static="false" source="getYears()">
+                                </proton:multi-list-picker-list>
+                                <proton:multi-list-picker-list alias="month" cycle="true" strict-matching="true">
+                                    <proton:multi-list-picker-list-item value="1"><span class="red">January</span>
+                                    </proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="2">February</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="3">March</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="4">April</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="5">May</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="6">June</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="7">July</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="8">August</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="9">September</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="10">October</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="11">November</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="12">December</proton:multi-list-picker-list-item>
+                                </proton:multi-list-picker-list>
+                                <proton:multi-list-picker-list alias="day" cycle="true" source="getDays(model.year, model.month)"
+                                                            strict-matching="true">
+                                </proton:multi-list-picker-list>
+                            </proton:multi-list-picker>
+                        </ion-scroll>
+                        </div>
+                        <div class="my-2">
+                            <span class="title">END DATE</span>
+                            <span style="color:gray;float:right;" ng-click="displayEndDate()">  {{getEndDate() | date:'MMM dd, yyyy'}}  </span>
+                            <br/>
+                            <ion-scroll direction="y" overflow-scroll="false" style="margin-top: 0px">
+                            <proton:multi-list-picker ng-model="endDate" attachment="{{attachment}}" bind-html="{{bindHtml}}" done="showingEndDate = false"
+                                                    ng-show="showingEndDate" class="align-center">
+                                <proton:multi-list-picker-list alias="year" static="false" source="getYears()">
+                                </proton:multi-list-picker-list>
+                                <proton:multi-list-picker-list alias="month" cycle="true" strict-matching="true">
+                                    <proton:multi-list-picker-list-item value="1">January
+                                    </proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="2">February</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="3">March</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="4">April</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="5">May</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="6">June</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="7">July</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="8">August</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="9">September</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="10">October</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="11">November</proton:multi-list-picker-list-item>
+                                    <proton:multi-list-picker-list-item value="12">December</proton:multi-list-picker-list-item>
+                                </proton:multi-list-picker-list>
+                                <proton:multi-list-picker-list alias="day" cycle="true" source="getDays(model.year, model.month)"
+                                                            strict-matching="true">
+                                </proton:multi-list-picker-list>
+                            </proton:multi-list-picker>
+                        </ion-scroll>
+                        </div>
+                <div>
+                       
+                        <div>
+                            <div class="row">
+                                <div class="col-6" style="width:50%" ng-click="vm.onCancelCustomPeriodOfTime()">
+                                    <span style="color:#0594d9;font-size:16px;font-weight:700;">Cancel</span>
+                                </div>
+                                <div class="col-6" style="width:50%" ng-click="vm.onSaveCustomPeriodOfTime()">
+                                    <span style="color:#0594d9; float: right;font-size:16px;font-weight:700;">Set</span>
+                                </div>
+                            </div>
+                        </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>

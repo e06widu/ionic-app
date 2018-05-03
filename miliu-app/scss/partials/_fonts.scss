@@ -1,0 +1,32 @@
+// This is font awsome files path
+$fa-font-path:  "../lib/font-awesome/fonts" !default;
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/Quicksand-Light.ttf')  format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/Quicksand-Regular.ttf')  format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/Quicksand-Medium.ttf')  format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Quicksand';
+    src: url('../fonts/Quicksand-Bold.ttf')  format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  

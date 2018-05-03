@@ -1,0 +1,280 @@
+{
+    "myIncome": [
+        {
+            "category": "Salary",
+            "amount": 1000
+        },
+        {
+            "category": "Other Income",
+            "amount": 200
+        }
+    ],
+    "mySpend": {
+        "totalBudget": 500,
+        "totalSpend": 300,
+        "topCategories": [
+            {
+                "id": 1,
+                "icon": "fa-home",
+                "name": "Rent & UTILITIES",
+                "iconClass": "icon-box-green",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 60,
+                "overSpentAmount": 0,
+                "iconBg": "box-green-gradiant",
+                "color": "#33cd5f"
+            },
+            {
+                "id": 2,
+                "icon": "fa-fighter-jet",
+                "name": "TRAVEL",
+                "iconClass":"icon-box-orange",
+                "budget": 300,
+                "spend": 1145,
+                "percentage": 300,
+                "overSpentAmount": 450,
+                "iconBg": "box-orange-gradiant",
+                "color": "#ffc900"
+            }
+        ],
+        "otherCategories": [
+            {
+                "id": 3,
+                "icon": "fa-cutlery",
+                "name": "FOODS",
+                "iconClass": "fa-cutlery",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 60,
+                "overSpentAmount": 0,
+                "iconBg": "box-blue-gradiant",
+                "color": "#886aea"
+            },
+            {
+                "id": 4,
+                "icon": "fa-bath",
+                "name": "Holyday",
+                "iconClass":"icon-box-orange",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 300,
+                "overSpentAmount": 450,
+                "iconBg": "box-red-gradiant",
+                "color": "#33cd5f"
+            }
+        ]
+    },
+    "myBorrowings": {
+        "totalBudget": 500,
+        "totalSpend": 300,
+        "topCategories": [
+            {
+                "id": 1,
+                "icon": "fa-home",
+                "name": "Rent & UTILITIES",
+                "iconClass": "icon-box-green",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 70,
+                "overSpentAmount": 0,
+                "iconBg": "box-green-gradiant",
+                "color": "#33cd5f"
+            },
+            {
+                "id": 2,
+                "icon": "fa-fighter-jet",
+                "name": "TRAVEL",
+                "iconClass":"icon-box-orange",
+                "budget": 300,
+                "spend": 1145,
+                "percentage": 90,
+                "overSpentAmount": 450,
+                "iconBg": "box-orange-gradiant",
+                "color": "#ffc900"
+            }
+        ],
+        "otherCategories": [
+            {
+                "id": 3,
+                "icon": "fa-home",
+                "name": "Rent & UTILITIES 02",
+                "iconClass": "icon-box-green",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 60,
+                "overSpentAmount": 0,
+                "iconBg": "box-red-gradiant",
+                "color": "#886aea"
+            },
+            {
+                "id": 4,
+                "icon": "fa-bath",
+                "name": "Holyday",
+                "iconClass":"icon-box-orange",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 300,
+                "overSpentAmount": 450,
+                "iconBg": "box-blue-gradiant",
+                "color": "#33cd5f"
+            }
+        ]
+    },
+    "myProtection": {
+        "totalBudget": 500,
+        "totalSpend": 300,
+        "topCategories": [
+            {
+                "id": 1,
+                "icon": "fa-home",
+                "name": "Rent & UTILITIES",
+                "iconClass": "icon-box-green",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 60,
+                "overSpentAmount": 0,
+                "iconBg": "box-green-gradiant",
+                "color": "#33cd5f"
+            },
+            {
+                "id": 2,
+                "icon": "fa-fighter-jet",
+                "name": "TRAVEL",
+                "iconClass":"icon-box-orange",
+                "budget": 300,
+                "spend": 1145,
+                "percentage": 300,
+                "overSpentAmount": 450,
+                "iconBg": "box-red-gradiant",
+                "color": "#ffc900"
+            }
+        ],
+        "otherCategories": [
+            {
+                "id": 3,
+                "icon": "fa-shopping-bag",
+                "name": "Rent & UTILITIES 02",
+                "iconClass": "icon-box-green",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 60,
+                "overSpentAmount": 0,
+                "iconBg": "box-orange-gradiant",
+                "color": "#33cd5f"
+            },
+            {
+                "id": 4,
+                "icon": "fa-cutlery",
+                "name": "TRAVEL 02",
+                "iconClass":"icon-box-orange",
+                "budget": 800,
+                "spend": 525,
+                "percentage": 300,
+                "overSpentAmount": 450,
+                "iconBg": "box-blue-gradiant",
+                "color": "#886aea"
+            }
+        ]
+    },
+    "myGrowth": {
+        "totalAmount": 500,
+        "savedAmount": 300,
+        "topGrowthCategories": [
+            {
+                "name": "Category1",
+                "graphData":{
+                    "labels":[
+                        "11/11",
+                        "11/12",
+                        "11/13",
+                        "11/14",
+                        "11/15",
+                        "11/16",
+                        "11/17"
+                    ],
+                    "data":[
+                        40,
+                        25,
+                        45,
+                        75,
+                        60,
+                        50,
+                        40
+                    ]
+                }
+            }
+        ],
+        "otherGrowthCategories": [
+            {
+                "name": "Category2",
+                "graphData":{
+                    "labels":[
+                        "11/11",
+                        "11/12",
+                        "11/13",
+                        "11/14",
+                        "11/15",
+                        "11/16",
+                        "11/17"
+                    ],
+                    "data":[
+                        20,
+                        25,
+                        60,
+                        70,
+                        50,
+                        75,
+                        70
+                    ]
+                }
+            },
+            {
+                "name": "Category3",
+                "graphData":{
+                    "labels":[
+                        "11/11",
+                        "11/12",
+                        "11/13",
+                        "11/14",
+                        "11/15",
+                        "11/16",
+                        "11/17"
+                    ],
+                    "data":[
+                        40,
+                        25,
+                        78,
+                        90,
+                        65,
+                        50,
+                        60
+                    ]
+                }
+            },
+            {
+                "name": "Category4",
+                "graphData":{
+                    "labels":[
+                        "11/11",
+                        "11/12",
+                        "11/13",
+                        "11/14",
+                        "11/15",
+                        "11/16",
+                        "11/17"
+                    ],
+                    "data":[
+                        10,
+                        25,
+                        20,
+                        78,
+                        60,
+                        50,
+                        70
+                    ]
+                }
+            }
+        ]
+    }
+}

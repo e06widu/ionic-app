@@ -1,0 +1,51 @@
+{
+    "accounts": [
+        {
+            "id": 1,
+            "name": "All Accounts",
+            "code":"ACAL"
+        },
+        {
+            "id": 2,
+            "name": "Account 01",
+            "code":"AC01"
+        }
+    ],
+    "periodOfTimes": [
+        {
+            "id": 1,
+            "name": "This Month",
+            "code":"THM"
+        },
+        {
+            "id": 2,
+            "name": "Last Month",
+            "code":"LAM"
+        },
+        {
+            "id": 3,
+            "name": "This Quarter",
+            "code":"THQ"
+        },
+        {
+            "id": 4,
+            "name": "Last Quarter",
+            "code":"LAQ"
+        },
+        {
+            "id": 5,
+            "name": "This Year",
+            "code":"THY"
+        },
+        {
+            "id": 6,
+            "name": "Last Year",
+            "code":"LAY"
+        },
+        {
+            "id": 7,
+            "name": "Custom",
+            "code":"CUS"
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+
+// styles of the setAlert.html (Set Alert view) AND
+// the styles of filter.html (Filter view)
+// together styled due to the same styles in both views
+
+.setAlert-page, .filter-page {
+    ion-content{
+
+     h2{
+      padding: 15px 10px;
+      font-weight: 600;
+    }
+    .budget, .category, .notify, .account, .period{
+      .title{
+        padding: 0 10px;
+        font-size: 14px !important;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .sub-title{
+        padding: 0 10px;
+        font-size: 18px !important;
+        font-weight: 300;
+       
+      }
+      .loader{
+        border-radius:100px;
+        height:20px;
+        margin: 0 5px 20px 5px;
+      }
+      .drop-down-icon{
+        float: right;
+        margin-right: 20px;
+       
+      }
+     
+    }
+    .line{
+      margin: 15px 10px;
+      border-bottom: 1px solid rgb(224, 218, 218);    
+    }
+    .list{
+      .item{
+        border: none !important;
+        margin-left: 15px;
+        padding: 10px 10px;
+        &.active{
+          background-color: #fff;
+          color: #0594d9;
+        }
+      }
+      .item-blue{
+        color: $blue;
+        font-weight: 700;
+      }
+
+      .item-icon{
+        color: $blue;
+        float: right;
+        text-align: center;
+        margin-right: 10px;
+      }
+    }
+   
+    }
+
+    .rzslider{
+      margin: 25px 0 15px 0;
+     
+      .rz-bar{
+        height: 8px;
+        background: $white-gray;
+      }
+                 
+    }
+
+    .high-light-end-date{
+      opacity: 0.5
+  }
+  
+  }
+
+.filter-page{
+  padding-left: 15px;
+
+    script{
+      ion-modal-view{
+        ion-content{
+          .filter-popup{
+            div{
+              span{
+                .title{
+                  font-size: 16px;
+                  text-transform: uppercase;
+                  font-weight: 700;
+                  margin: 10px 0;
+                }
+              }
+            }
+        }
+      }
+    }
+ 
+    
+  }
+}
+
+
+

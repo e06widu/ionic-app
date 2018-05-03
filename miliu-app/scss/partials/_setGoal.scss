@@ -1,0 +1,145 @@
+
+ // styles for the setGoal.html (Set Goal view)
+ .setGoal-page{
+
+  sup{
+    font-size: 16px;
+  }
+  .text-select{
+    font-size: 18px;
+    color: gray;
+    background-color: $light;
+  }
+
+  .content-border{
+    border-bottom: 1px solid rgb(212, 208, 208);
+  }
+
+  ion-footer-bar {
+    height: 80px;
+    background: linear-gradient(#0EA5E1, #0383D2);
+    .buttons{
+      .button{
+        &.left{
+          border:0px;
+          background: linear-gradient(#0EA5E1, #0383D2);
+          color:white;
+          span{
+            font-size: 18px;
+          }
+        }
+        &.right{
+          border:0px;
+          background: linear-gradient(#0EA5E1, #0383D2);
+          color:white;
+          span {
+            font-size: 24px;
+            sup{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+    .no-border{
+      // border: none;
+      border-bottom: none none 1px none solid rgb(212, 208, 208);
+    }
+    .no-border-left{
+      border-left: none;
+    }
+    ion-content{
+      h2{
+         font-weight: 700; 
+      }
+
+      .budget, .category, .notify, .account, .period{
+        .title{
+          padding: 0 10px;
+          font-size: 14px !important;
+          font-weight: 900;
+          text-transform: uppercase;
+        }
+        .sub-title{
+          padding: 0 10px;
+          font-size: 18px !important;
+          font-weight: 300;
+         
+        }
+        .loader{
+          border-radius:100px;
+          height:20px;
+          margin: 0 5px 20px 5px;
+        }
+        .drop-down-icon{
+          float: right;
+          margin-right: 20px;
+         
+        }
+
+        
+       
+      }
+      .line{
+        margin: 15px 10px;
+        border-bottom: 1px solid rgb(224, 218, 218);    
+      }
+
+      .content{
+        font-size: 18px;
+        sup{
+          font-size: 14px;
+        }
+        .text-select{
+          font-size: 18px;
+          color: gray;
+          background-color: $light;
+        }
+      }
+
+      .list{
+        .item{
+          border: none !important;
+          margin-left: 15px;
+          padding: 10px 10px;
+          &.active{
+            background-color: #fff;
+            color: #0594d9;
+          }
+        }
+        .item-blue{
+          color: $blue;
+          font-weight: 700;
+        }
+  
+        .item-icon{
+          color: $blue;
+          float: right;
+          text-align: center;
+          margin-right: 10px;
+        }
+      }
+
+
+      .monthly-contribution{
+        height: 60px;
+        width: 100%;
+        background-color: $blue;
+        color: $light;
+        position: relative;
+        top: 12%;
+    
+        h4{
+          color: $light;
+        }
+        span{
+          font-size: 18px;
+          color: white; 
+          float: right;
+          
+          }
+      }
+    }
+   }

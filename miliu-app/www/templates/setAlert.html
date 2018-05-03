@@ -1,0 +1,65 @@
+<ion-view class="setAlert-page">
+  <ion-nav-buttons side="primary">
+    <button class="button button-clear" style="color:#0594d9" ng-click="vm.onSave()">
+      <strong style="font-size:18px;font-weight:500;">Save</strong>      
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="page-top">
+
+    <h2 class="mt-3 pt-0">Set Alert</h2>
+
+    <div class="budget" on-tap="vm.openMySpent()">
+      <p class="title">Budget Head</p>
+      <span class="sub-title">
+        {{vm.selectedBudgetHead.name}}
+      </span>
+      <span class="drop-down-icon">
+        <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenedMySpend, 'ion-chevron-up': vm.isOpenedMySpend }" aria-hidden="true"></i>
+      </span>
+    </div>
+
+    <div class="line" ng-show="vm.isOpenedMySpend"></div>
+
+    <div class="list" ng-show="vm.isOpenedMySpend">
+      <li class="item {{(budgetHead.id == vm.selectedBudgetHead.id) ? 'active' : ''}}" ng-repeat="budgetHead in vm.budgetHeads"
+        ng-click="vm.selectedBudgetHead = budgetHead; vm.selectedCategory = vm.selectedBudgetHead.categories[0];vm.isOpenedMySpend = false ">
+        {{budgetHead.name}}
+        <span class="item-icon" ng-if="budgetHead.id == vm.selectedBudgetHead.id ">
+          <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+        </span>
+      </li>
+    </div>
+    <div class="line"></div>
+    <div class="category" on-tap="vm.openCategory()" ng-style="vm.selectedBudgetHead.categories.length == 0 ? {opacity: 0.3}:{}">
+      <p class="title">Category</p>
+      <span class="sub-title">{{vm.selectedCategory.name}}</span>
+      <span class="drop-down-icon">
+        <i class="icon" ng-class="{'ion-chevron-down' : !vm.isOpenedCategory, 'ion-chevron-up': vm.isOpenedCategory }" aria-hidden="true"></i>
+      </span>
+    </div>
+
+    <div class="list" ng-show="vm.isOpenedCategory">
+      <li class="item {{(category.id == vm.selectedCategory.id ) ? 'active' : ''}}" 
+      ng-repeat="category in vm.selectedBudgetHead.categories" 
+      ng-click="vm.selectedCategory = category; vm.isOpenedCategory=false">
+        {{category.name}}
+        <span class="item-icon" ng-if="category.id == vm.selectedCategory.id ">
+          <i class="icon ion-checkmark-round" aria-hidden="true"></i>
+        </span>
+      </li>
+    </div>
+    <div class="line"></div>
+
+    <div class="notify py-0 my-0">
+      <p class="title my-0 py-0">Notify me when my Budget</p>
+      <div class="sub-title pt-2 bp-0 my-0 pl-2">
+        {{vm.slider.value}} % </div>
+      <div class="row px-2 py-0">
+        <rzslider rz-slider-model="vm.slider.value" rz-slider-options="vm.slider.options"></rzslider>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

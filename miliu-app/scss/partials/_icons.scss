@@ -1,0 +1,407 @@
+ 
+// Menu Page icons
+
+ .money-management-icon{
+    position: absolute; 
+    top: 15px;
+    bottom: 0;
+    left: 30px;
+    height: 45%;
+    width: auto; 
+    overflow: hidden;
+  
+       &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/money.png') no-repeat;
+            background-size: auto 100%;
+       }
+       &.active{
+            &:before{
+                content: '';
+                display: block;
+                width: 50px; /* Generic width */
+                height: 100%;
+                background: url('../img/icons8-money-50-white.png') no-repeat;
+                background-size: auto 100%;
+        }
+       }
+    }
+
+    .money-movement-icon{
+        position: absolute; 
+        top: 15px;
+        bottom: 0;
+        left: 30px;
+        height: 45%;
+        width: auto; 
+        overflow: hidden;
+      
+           &:before{
+                content: '';
+                display: block;
+                width: 50px; /* Generic width */
+                height: 100%;
+                background: url('../img/data-transfer.png') no-repeat;
+                background-size: auto 100%;
+           }
+           &.active{
+            &:before{
+                content: '';
+                display: block;
+                width: 50px; /* Generic width */
+                height: 100%;
+                background: url('../img/icons8-data-transfer-white.png') no-repeat;
+                background-size: auto 100%;
+        }
+       }
+        }
+
+
+        .fund-my-purchases-icon{
+            position: absolute; 
+            top: 15px;
+            bottom: 0;
+            left: 30px;
+            height: 45%;
+            width: auto; 
+            overflow: hidden;
+          
+               &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/card-payment.png') no-repeat;
+                    background-size: auto 100%;
+               }
+               &.active{
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/icons8-card-payment-white.png') no-repeat;
+                    background-size: auto 100%;
+            }
+           }
+            }
+
+        .notification-icon{
+            position: absolute; 
+            top: 15px;
+            bottom: 0;
+            left: 30px;
+            height: 45%;
+            width: auto; 
+            overflow: hidden;
+            
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/notification.png') no-repeat;
+                    background-size: auto 100%;
+                }
+                &.active{
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 50px; /* Generic width */
+                        height: 100%;
+                        background: url('../img/icons8-notification-white.png') no-repeat;
+                        background-size: auto 100%;
+                }
+               }
+            }
+
+                
+        .talk-to-miliu-icon{
+            position: absolute; 
+            top: 15px;
+            bottom: 0;
+            left: 30px;
+            height: 45%;
+            width: auto; 
+            overflow: hidden;
+            
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/chat.png') no-repeat;
+                    background-size: auto 100%;
+                }
+                &.active{
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 50px; /* Generic width */
+                        height: 100%;
+                        background: url('../img/icons8-chat-white.png') no-repeat;
+                        background-size: auto 100%;
+                    }
+                }
+        }
+
+        .settings-icon{
+            position: absolute; 
+            top: 15px;
+            bottom: 0;
+            left: 30px;
+            height: 45%;
+            width: auto; 
+            overflow: hidden;
+            
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/settings.png') no-repeat;
+                    background-size: auto 100%;
+                }
+                &.active{
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 50px; /* Generic width */
+                        height: 100%;
+                        background: url('../img/icons8-settings-white.png') no-repeat;
+                        background-size: auto 100%;
+                    }
+                }
+            }
+
+                    
+            .logout-icon{
+                position: absolute; 
+                top: 15px;
+                bottom: 0;
+                left: 30px;
+                height: 45%;
+                width: auto; 
+                overflow: hidden;
+                
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 50px; /* Generic width */
+                        height: 100%;
+                        background: url('../img/sign-out.png') no-repeat;
+                        background-size: auto 100%;
+                    }
+                    &.active{
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 50px; /* Generic width */
+                        height: 100%;
+                        background: url('../img/icons8-sign-out-white.png') no-repeat;
+                        background-size: auto 100%;
+                }
+                }
+                }
+
+// Dashboard Icons
+
+.my-budget-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/money-bag.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-goals-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/christmas-star.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-dashboard-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; 
+            height: 100%;
+            background: url('../img/dashboard.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-advice-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/advice.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-spend-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/buying.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-growth-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/increase.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+.my-borrowings-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/receive-cash.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+
+.my-protection-icon{
+    position: absolute; 
+    top: 16px;
+    bottom: 0;
+    left: 13px;
+    height: 60%;
+    width: auto; 
+    overflow: hidden;
+    
+        &:before{
+            content: '';
+            display: block;
+            width: 50px; /* Generic width */
+            height: 100%;
+            background: url('../img/protect.png') no-repeat;
+            background-size: auto 100%;
+        }
+    }
+
+        // My Spend Dashboard Page icons
+
+        .hsbc-icon{
+            position: absolute; 
+            top: 20px;
+            bottom: 0;
+            left: 20px;
+            height: 36%;
+            width: auto; 
+            overflow: hidden;
+          
+               &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/hsbc.png') no-repeat;
+                    background-size: auto 100%;
+               } 
+        }
+
+
+        // My Budget Page Icons
+
+        .plan-white{
+            position: absolute; 
+            top: 90px;
+            bottom: 0;
+            left: 20px;
+            height: 5%;
+            width: auto; 
+            overflow: hidden;
+            z-index: 200;
+          
+               &:before{
+                    content: '';
+                    display: block;
+                    width: 50px; /* Generic width */
+                    height: 100%;
+                    background: url('../img/plan-white.png') no-repeat;
+                    background-size: auto 100%;
+               }
+            }

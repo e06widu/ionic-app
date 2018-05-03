@@ -1,0 +1,98 @@
+<ion-view class="myTransactions-page" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <button on-tap="vm.navigate('app.calendar')" class="button button-clear button-positive" style="color:#0594d9;">
+            <i class="icon ion-calendar" aria-hidden="true"></i>
+        </button>
+        <button on-tap="vm.navigate('app.filter')" class="button button-clear button-positive" style="color:#0594d9;">
+            <i class="icon ion-levels" aria-hidden="true"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-title class="title">
+        <span style="font-size:12px;">
+            <i class="icon ion-record blue-text" style="color:#0594d9;" aria-hidden="true"></i>
+            <i class="icon ion-record gray-text" aria-hidden="true" style="color: lightgray;"></i>
+        </span>
+    </ion-nav-title>
+    <ion-content class="page-top" on-swipe-left="vm.onSwipeLeft()">
+
+        <div class="row">
+            <h2>My Transactions</h2>
+            <p class="date pt-5 pl-2">{{vm.timePeriod}}</p>
+        </div>
+
+        <div class="row p-0">
+            <div class="col col-35 pt-1" on-tap="vm.loadSpendsData()">
+                <div class="card card-spend ml-3 mr-0" ng-class="{ 'selected' : vm.isTotalSpendSelected == true }">
+                    <p class="title title-spend mb-1">Total Spend</p>
+                    <p class="value value-spend mb-1">
+                        <sup>$</sup>{{vm.totalSpend | number : 0}}</p>
+                </div>
+            </div>
+            <div class="col col-30 p-0 m-0" on-tap="vm.loadTransactionViews()">
+                <div id="pie-chart">
+                    <div google-chart chart="vm.chartObject" class="pi-chart" style="width: 120px; height: 120px;">
+                    </div>
+                    <div class="overlay-label" ng-if="!vm.isTotalSpendSelected">
+                        <img style="height: 40px;width: 40px;" src="img/money.png" />
+                    </div>
+                    <div class="overlay-label" ng-if="vm.isTotalSpendSelected">
+                        <img style="height: 40px;width: 40px;" src="img/buying.png" />
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col col-35 pt-1" on-tap="vm.loadIncomeData()">
+                <div class="card card-income mr-3 ml-0" ng-class="{ 'selected' : vm.isTotalSpendSelected == false }">
+                    <p class="title title-income mb-1">Total Income</p>
+                    <p class="value value-income mb-1">
+                        <sup>$</sup>{{vm.totalIncome | number : 0}}</p>
+                </div>
+            </div>
+        </div>
+        <table class="trans-table mx-3">
+            <tr class="row-head">
+                <th class="head-icons px-2"></th>
+                <th class="px-1 sortorder" ng-click="vm.sortBy('category')">Category
+                    <i ng-if="!vm.reverse" class="icon ion-chevron-up"></i>
+                    <i ng-if="vm.reverse" class="icon ion-chevron-down"></i>
+                </th>
+                <th class="px-2 value">Percent</th>
+                <th class="pl-0 sortorder value" ng-click="vm.sortBy('amount')">Amount
+                    <i ng-if="!vm.reverse" class="icon ion-chevron-up"></i>
+                    <i ng-if="vm.reverse" class="icon ion-chevron-down"></i>
+                </th>
+            </tr>
+            <tbody ng-repeat="category in vm.transactions | orderBy:vm.propertyName:vm.reverse" ng-class="!vm.selectedCategory  && vm.isTotalSpendSelected ? '' : vm.selectedCategory.id != category.id && vm.isTotalSpendSelected ? 'disable-pointer': ''">
+
+                <tr class="row-data">
+                    <td ng-click="vm.onCategoryTap(category)">
+                        <div class="badge badge-calm" ng-style="{background:'{{category.color}}'}">
+                            <i class="icon {{category.icon}}" aria-hidden="true"></i>
+                    </td>
+                    <td ng-click="vm.selectItem(); vm.onCategoryTap(category)">{{category.category}}</td>
+                    <td class="gray-text value p-2">{{category.percentage}}%</td>
+                    <td class="dark-text value p-2">${{category.amount}}</td>
+                </tr>
+
+
+                <tr class="row-data" ng-repeat="item in category.items" ng-show="vm.isTotalSpendSelected && (vm.selectedCategory.id == category.id)">
+                    <td class="pl-2">{{item.date}}</td>
+                    <td>{{item.name}}</td>
+                    <td class="value p-2">{{item.percentage}}%</td>
+                    <td class="value p-2">${{item.amount | number :0}}</td>
+                </tr>
+                <tr ng-show="vm.isTotalSpendSelected && (vm.selectedCategory.id == category.id)">
+                    <td colspan="4" style="text-align:center; color:#0594d9; font-size:16px;">
+                        <p class="py-3"><strong>View more transactions</strong></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-light" ng-if="vm.selectedCategory && vm.isTotalSpendSelected">
+        <div class="title" >
+            <i class="icon ion-close-circled" style="font-size: 45px;" ng-click="vm.colapseCategory()"></i>
+        </div>
+    </ion-footer-bar>
+</ion-view>

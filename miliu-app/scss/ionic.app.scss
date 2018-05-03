@@ -1,0 +1,43 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+*/
+
+@import "partials/variables.scss";
+@import "partials/icons.scss";
+@import "partials/fonts.scss";
+@import "partials/common.scss";
+@import "partials/menu.scss";
+@import "partials/landing.scss";
+@import "partials/mySpend.scss";
+@import "partials/myIncome.scss";
+@import "partials/mySpendDb.scss";
+@import "partials/myBudget.scss";
+@import "partials/goals.scss";
+@import "partials/setGoal.scss";
+@import "partials/setAlertandFilter.scss";
+@import "partials/myTransactions.scss";
+@import "partials/myTransactionsDaily.scss";
+@import "partials/calandar.scss";
+@import "partials/proton.multi-list-picker.scss";
+@import "partials/rzslider.scss";
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic.scss";
+//Include font awsome
+@import "www/lib/font-awesome/scss/font-awesome";  
+
+*,input,textarea{
+  -webkit-appearance: none;
+}
+body{
+  font-family: "Quicksand", sans-serif;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: "Quicksand", sans-serif;
+  }
+
+
+
+

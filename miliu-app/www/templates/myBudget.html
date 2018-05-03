@@ -1,0 +1,297 @@
+<ion-view class="myBudget-page">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear btn-set-alert" style="color:#0594d9" ng-click="vm.navigate('app.setAlert')">
+      <strong style="font-size:16px;font-weight:500;">Set Alert</strong>
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="page-top">
+
+    <h2 class="title">My Budget</h2>
+
+    <div class="card-list">
+
+      <div class="card card-my-income p-3">
+        <div class="my-income">
+          <span class="pl-0">
+            <img src="img/money.png">
+          </span>
+          <span class="title">
+            My Income
+          </span>
+          <p class="income-title">
+            <sup>$</sup>{{vm.myIncome.total | number:0}}
+            <p>
+        </div>
+        <div class="salary" ng-repeat="category in vm.myIncome.categories">
+          <span class="title">
+            {{category.category}}
+          </span>
+          <span class="value">${{category.amount | number:0}}</span>
+        </div>
+      </div>
+
+      <div class="card card-my-spend p-3 ">
+        <div class="my-spend">
+          <span class="icon pl-0">
+            <img src="img/buying.png"> </span>
+          <span class="title">
+            My Spend
+          </span>
+          <p>${{vm.mySpend.totalSpend| number:0}} of ${{vm.mySpend.totalBudget | number:0}} spent
+            <p>
+        </div>
+        <div class="content">
+          <div class="row border-bottom" ng-repeat="topCategory in vm.mySpend.topCategories">
+
+            <div class="col col-20">
+              <div class="{{topCategory.iconClass}} {{topCategory.iconBg}}">
+                <i class="icon fa {{topCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{topCategory.name}}</span>
+                <span class="value">{{topCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+                  <div class="loader" ng-style="{width:'{{topCategory.percentage}}%',
+                                    background: '{{topCategory.percentage <= 80 ? '#38b971' :
+                                    topCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+                </div>
+                <span>
+                  <span class="spent-value">${{topCategory.spend | number: 0}} 0f ${{topCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="topCategory.overSpentAmount > 0">${{topCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+              <!-- <div class="line"></div> -->
+            </div>
+
+          </div>
+          <!-- <div class="line"></div> -->
+        </div>
+
+        <div class="bottom-statement" ng-if="vm.mySpend.otherCategories.length > 0 && !vm.mySpend.showOtherCategories" ng-click="vm.mySpend.showOtherCategories = true">
+          View +{{vm.mySpend.otherCategories.length }} categories
+        </div>
+
+        <div class="content" ng-if="vm.mySpend.showOtherCategories">
+          <div class="row border-bottom" ng-repeat="otherCategory in vm.mySpend.otherCategories">
+            <div class="col col-20">
+              <div class="icon-box-{{otherCategory.color <= 80 ? 'orange' : 'green'}} {{otherCategory.iconBg}}">
+                <i class="icon fa {{otherCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{otherCategory.name}}</span>
+                <span class="value">{{otherCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+                  <div class="loader" ng-style="{width:'{{otherCategory.percentage}}%',
+                                    background: '{{otherCategory.percentage <= 80 ? '#38b971' :
+                                    otherCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+                </div>
+                <span>
+                  <span class="spent-value">${{otherCategory.spend | number: 0}} 0f ${{otherCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="otherCategory.overSpentAmount > 0">${{otherCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="bottom-statement" ng-if="vm.mySpend.otherCategories.length > 0 && vm.mySpend.showOtherCategories" ng-click="vm.mySpend.showOtherCategories = false">
+            Less
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card card-my-borrowing p-3 ">
+        <div class="my-borrowing">
+          <span class="icon pl-0">
+            <img src="img/receive-cash.png">
+          </span>
+          <span class="title">
+            My Borrowings
+          </span>
+          <p>${{vm.myBorrowings.totalSpend}} of ${{vm.myBorrowings.totalBudget}} paid
+            <p>
+        </div>
+        <div class="content">
+          <div class="row border-bottom" ng-repeat="topCategory in vm.myBorrowings.topCategories">
+            <div class="col col-20">
+              <div class="icon-box-{{$index % 2 == 0 ? 'orange' : 'green'}}  {{topCategory.iconBg}}">
+                <i class="icon fa {{topCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{topCategory.name}}</span>
+                <span class="value">{{topCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+
+                  <div class="loader" ng-style="{width:'{{topCategory.percentage}}%',
+                    background: '{{topCategory.percentage <= 80 ? '#38b971' :
+                    topCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+
+                </div>
+                <span>
+                  <span class="spent-value">${{topCategory.spend | number: 0}} 0f ${{topCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="topCategory.overSpentAmount > 0">${{topCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="bottom-statement" ng-if="vm.myBorrowings.otherCategories.length > 0 && !vm.myBorrowings.showOtherCategories"
+          ng-click="vm.myBorrowings.showOtherCategories = true">
+          View +{{vm.myBorrowings.otherCategories.length }} categories
+        </div>
+
+        <div class="content" ng-if="vm.myBorrowings.showOtherCategories">
+          <div class="row border-bottom" ng-repeat="otherCategory in vm.myBorrowings.otherCategories">
+            <div class="col col-20">
+              <div class="icon-box-{{$index % 2 == 0  ? 'orange' : 'green'}}  {{otherCategory.iconBg}}">
+                <i class="icon fa {{otherCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{otherCategory.name}}</span>
+                <span class="value">{{otherCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+                  <div class="loader" ng-style="{width:'{{otherCategory.percentage}}%',
+                      background: '{{otherCategory.percentage <= 80 ? '#38b971' :
+                      otherCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+                </div>
+                <span>
+                  <span class="spent-value">${{otherCategory.spend | number: 0}} 0f ${{otherCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="otherCategory.overSpentAmount > 0">${{otherCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="bottom-statement" ng-if="vm.myBorrowings.otherCategories.length > 0 && vm.myBorrowings.showOtherCategories" ng-click="vm.myBorrowings.showOtherCategories = false">
+            Less
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card card-my-protection p-3 ">
+        <div class="my-protection">
+          <span class="icon pl-0">
+            <img src="img/protect.png">
+          </span>
+          <span class="title">
+            My Protection
+          </span>
+          <p>${{vm.myProtection.totalSpend | number : 0}} of ${{vm.myProtection.totalBudget | number : 0}} paid
+            <p>
+        </div>
+
+        <div class="content">
+          <div class="row border-bottom" ng-repeat="topCategory in vm.myProtection.topCategories">
+            <div class="col col-20">
+              <div class="icon-box-{{$index % 2 == 0 ? 'orange' : 'green'}}  {{topCategory.iconBg}}">
+                <i class="icon fa {{topCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{topCategory.name}}</span>
+                <span class="value">{{topCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+                  <div class="loader" ng-style="{width:'{{topCategory.percentage}}%',
+                      background: '{{topCategory.percentage <= 80 ? '#38b971' :
+                      topCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+                </div>
+                <span>
+                  <span class="spent-value">${{topCategory.spend | number: 0}} 0f ${{topCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="topCategory.overSpentAmount > 0">${{topCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="bottom-statement" ng-if="vm.myProtection.otherCategories.length > 0 && !vm.myProtection.showOtherCategories"
+          ng-click="vm.myProtection.showOtherCategories = true">
+          View +{{vm.myProtection.otherCategories.length }} categories
+        </div>
+
+        <div class="content" ng-if="vm.myProtection.showOtherCategories">
+          <div class="row border-bottom" ng-repeat="otherCategory in vm.myProtection.otherCategories">
+            <div class="col col-20">
+              <div class="icon-box-{{$index % 2 == 0  ? 'orange' : 'green'}}  {{otherCategory.iconBg}}">
+                <i class="icon fa {{otherCategory.icon}}" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="col col-80">
+              <div class="rent">
+                <span class="title">{{otherCategory.name}}</span>
+                <span class="value">{{otherCategory.percentage}}%</span>
+                <div class="row p-0 gray-bg mb-2">
+                  <div class="loader" ng-style="{width:'{{otherCategory.percentage}}%',
+                      background: '{{otherCategory.percentage <= 80 ? '#38b971' :
+                      otherCategory.percentage <= 100 ? '#fc9504' : '#fc4949' }}'}">
+                  </div>
+                </div>
+                <span>
+                  <span class="spent-value">${{otherCategory.spend | number: 0}} 0f ${{otherCategory.budget | number: 0}} spent</span>
+                  <span class="value" ng-if="otherCategory.overSpentAmount > 0">${{otherCategory.overSpentAmount | number: 0}} over</span>
+                </span>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="bottom-statement" ng-if="vm.myProtection.otherCategories.length > 0 && vm.myProtection.showOtherCategories" ng-click="vm.myProtection.showOtherCategories = false">
+            Less
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-my-protection p-3 ">
+        <div class="my-protection">
+          <span class="icon pl-0">
+            <img src="img/increase.png">
+          </span>
+          <span class="title">
+            My Growth
+          </span>
+          <p>${{vm.myGrowth.savedAmount}} of ${{vm.myGrowth.totalAmount}} saved
+            <p>
+        </div>
+
+        <div class="content">
+
+          <div class="chart-container" ng-repeat="category in vm.myGrowth.topGrowthCategories">
+            <canvas id="topChart{{$index}}" ng-init="vm.initGenerateChart('topChart'+$index, category.graphData)"></canvas>
+          </div>
+        </div>
+
+        <div class="bottom-statement" ng-if="vm.myGrowth.otherGrowthCategories.length > 0 && !vm.myGrowth.showOtherCategories" ng-click="vm.myGrowth.showOtherCategories = true">
+          View +{{vm.myGrowth.otherGrowthCategories.length }} categories
+        </div>
+        <div class="content" ng-if="vm.myGrowth.showOtherCategories">
+
+          <div class="chart-container" ng-repeat="category in vm.myGrowth.otherGrowthCategories">
+            <canvas id="otherChart{{$index}}" ng-init="vm.initGenerateChart('otherChart'+$index, category.graphData)"></canvas>
+          </div>
+        </div>
+
+        <div class="bottom-statement" ng-if="vm.myGrowth.otherGrowthCategories.length > 0 && vm.myGrowth.showOtherCategories" ng-click="vm.myGrowth.showOtherCategories = false">
+          Less
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

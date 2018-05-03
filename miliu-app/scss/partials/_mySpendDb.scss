@@ -1,0 +1,560 @@
+
+
+//mySpend.html page styles (My Spend Dashboard view)
+
+.mySpendDb-page{
+    ion-content{
+      h2{
+        padding: 10px 10px 0 10px;
+        font-weight: 700;
+      }
+      .row{
+        padding: 2px;
+         .box-green, .box-orange{
+            margin: 5px;
+            padding: 5px;
+            height: 110px;
+            border-radius: 5px;
+            color: white !important;
+            text-transform: uppercase;
+
+            h4{
+              color: white;
+              font-weight: 900;
+              font-size: 16px;
+            }
+            h3{
+              color: white;
+             font-weight: 100 !important;
+            }
+            p{
+              font-size: 16px;
+              font-weight: 300;
+              line-height: 5px;
+            }
+
+        }
+
+        .box-green{
+          /* IE10+ */
+          background-image: -ms-linear-gradient(top, #45C481 0%, #29AC5E 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(top, #45C481 0%, #29AC5E 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(top, #45C481 0%, #29AC5E 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #45C481), color-stop(100, #29AC5E));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(top, #45C481 0%, #29AC5E 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to bottom, #45C481 0%, #29AC5E 100%);
+
+          border: 1px solid $green;
+          .icon{
+
+            color: $red;
+            padding-top: 15px;
+            top: 46%;
+            left: 8%;
+            margin-right: 10px;
+          }
+        }
+        .box-orange{
+          /* IE10+ */
+          background-image: -ms-linear-gradient(top, #FFA600 0%, #FF8600 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(top, #FFA600 0%, #FF8600 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(top, #FFA600 0%, #FF8600 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFA600), color-stop(100, #FF8600));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(top, #FFA600 0%, #FF8600 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to bottom, #FFA600 0%, #FF8600 100%);
+          border: 1px solid $orange;
+          .icon{
+            font-size:25px;
+            color: $red;
+            position: relative;
+            top: 5px;
+            right: 5px;
+
+          }
+        }
+
+        .box-battery {
+          border-radius: 5px;
+          border-left: none;
+          margin-top: -5px;
+          transform: translateX(5px);
+          height: 100px;
+
+          // These pseudo elements act as top and bottom borders with gradient backgrounds
+          &:after, &:before{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 5px;
+          }
+          &:before {
+            top: 0;
+          }
+          &:after {
+            bottom: 0;
+          }
+        }
+
+        .box-red-batery{
+
+          border-right: 5px solid #D52D1F;
+
+          &:after, &:before{
+            background-image: linear-gradient(to right, #DC4A36 0%, #D52D1F 100%);
+          }
+
+          /* IE10+ */
+          background-image: -ms-linear-gradient(left, #FB513C 0%, #F93323 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(left, #FB513C 0%, #F93323 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(left, #FB513C 0%, #F93323 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left, right, color-stop(0, #FB513C), color-stop(100, #F93323));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(left, #FB513C 0%, #F93323 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to right, #FB513C 0%, #F93323 100%);
+        }
+
+        .box-blue-batery{
+
+          border-right: 5px solid #046EAD;
+
+          &:after, &:before{
+            background-image: linear-gradient(to right, #0592C8 0%, #046EAD 100%);
+          }
+
+          /* IE10+ */
+          background-image: -ms-linear-gradient(left, #0EA5E1 0%, #0383D2 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(left, #0EA5E1 0%, #0383D2 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(left, #0EA5E1 0%, #0383D2 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left, right, color-stop(0, #0EA5E1), color-stop(100, #0383D2));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(left, #0EA5E1 0%, #0383D2 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to right, #0EA5E1 0%, #0383D2 100%);
+        }
+
+        .white-box-batery{
+          /* IE10+ */
+          background-image: -ms-linear-gradient(left, #FFFFFF 0%, #fff 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(left, #FFFFFF 0%, #fff 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(left, #FFFFFF 0%, #fff 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FFFFFF), color-stop(100, #fff));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(left, #FFFFFF 0%, #fff 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to right, #FFFFFF 0%, #fff 100%);
+        }
+
+      }
+
+      .box-blue{
+        margin: 0 15px 15px 15px;
+        /* IE10+ */
+        background-image: -ms-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+        /* Mozilla Firefox */
+        background-image: -moz-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+        /* Opera */
+        background-image: -o-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+        /* Webkit (Safari/Chrome 10) */
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0EA5E1), color-stop(100, #0383D2));
+
+        /* Webkit (Chrome 11+) */
+        background-image: -webkit-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+        /* W3C Markup */
+        background-image: linear-gradient(to bottom, #0EA5E1 0%, #0383D2 100%);
+
+        &.box-red{
+          /* IE10+ */
+          background-image: -ms-linear-gradient(top, #FB513C 0%, #F93323 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(top, #FB513C 0%, #F93323 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(top, #FB513C 0%, #F93323 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FB513C), color-stop(100, #F93323));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(top, #FB513C 0%, #F93323 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to bottom, #FB513C 0%, #F93323 100%);
+        }
+
+        padding: 5px 10px;
+        height: 150px;
+        border-radius: 5px;
+        color: white;
+
+
+        h4{
+          color: white;
+          font-weight: 900;
+          font-size: 16px;
+        }
+
+        h3,p{
+          color: white;
+          float: right;
+        }
+
+        span{
+          font-size: 20px;
+        }
+        .upper-row{
+          .icon-box{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: white;
+            float: right;
+            .icon{
+              font-size:20px;
+              color:$calm;
+              float: right;
+              padding: 5px;
+            }
+          }
+        }
+        .bot-row{
+          img{
+            height: 85px;
+          }
+          h3{
+            font-size: 30px;
+            position: relative;
+            bottom: 10%;
+
+          }
+          .icon{
+            position: relative;
+            bottom: 40px;
+            left: -20px;
+            font-size: 40px;
+            color:white;
+            padding: 40px 20px 0 10px !important;
+          }
+          p{
+            font-size: 14px;
+            font-weight: 100;
+            position: relative;
+            bottom: 15%;
+          }
+        }
+      }
+
+      .card{
+        .icon{
+          font-size:40px;
+          color:rgba(90, 84, 84, 0.534);
+          padding: 10px 40% 10px 40%;
+        }
+        p{
+          color:rgba(37, 36, 36, 0.884);
+          font-size: 14px;
+          padding: 10px 10px;
+          line-height: 25px;
+          text-align: center;
+          margin: 0 !important;
+        }
+        .button-blue{
+          // background: $blue;
+          /* IE10+ */
+          background-image: -ms-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+          /* Mozilla Firefox */
+          background-image: -moz-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+          /* Opera */
+          background-image: -o-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+          /* Webkit (Safari/Chrome 10) */
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0EA5E1), color-stop(100, #0383D2));
+
+          /* Webkit (Chrome 11+) */
+          background-image: -webkit-linear-gradient(top, #0EA5E1 0%, #0383D2 100%);
+
+          /* W3C Markup */
+          background-image: linear-gradient(to bottom, #0EA5E1 0%, #0383D2 100%);
+          border: 1px solid $blue;
+          border-radius: 7px;
+          color: white;
+          height: 45px;
+          width: 150px;
+          margin-left: 25%;
+          font-size: 16px;
+          letter-spacing: 1px;
+          box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.2), 1px 1px 10px 0px rgba(0, 0, 0, 0.19);
+
+        }
+      }
+
+        .battery-level {
+          margin: 0px auto;
+            // background-color: #fff;
+            border: 5px solid rgb(226, 222, 222);
+            height: 100px;
+            position: relative;
+            width: 90%;
+            border-radius: 5px;
+            box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.2), 1px 1px 10px 0px rgba(0, 0, 0, 0.19);
+
+          p{
+            font-size: 20px;
+            padding: 40px 30px 40px 30px;
+            float: right;
+            color: white;
+
+          }
+          }
+           .battery-level::before {
+            background-color: rgb(226, 222, 222);
+            content: "";
+            display: block;
+            height: 50px;
+            position: absolute;
+            left: -12px;
+            top: 20px;
+            width: 10px;
+          }
+
+          .message{
+            .card{
+              padding: 0;
+              border-radius: 5px;
+              box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.2), 1px 1px 10px 0px rgba(0, 0, 0, 0.19);
+              .row{
+                padding: 0;
+                .col-20{
+                  padding: 0;
+                  img{
+                    height: 30px;
+                    margin-top: 20px;
+                    margin-left: 10px;
+                  }
+                }
+                .col-80{
+                  padding: 0;
+                  p{
+                    font-size: 14px;
+                    color: $light-gray;
+                    text-align: left;
+                    span{
+                      font-weight: 700;
+                      color: $red;
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+
+          .bottom-card{
+            .card{
+              padding: 0 !important;
+              border-radius: 5px;
+              box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.2), 1px 1px 10px 0px rgba(0, 0, 0, 0.19);
+              .row{
+                padding: 0;
+                position: relative;
+                .col{
+                  padding: 0;
+                  .title{
+                    font-size: 15px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    text-align: center;
+                    padding: 0;
+                    letter-spacing: 0.5px;
+                    border-right: 1px solid $white-gray;
+                  }
+                  .value{
+                    font-size: 24px;
+                    text-align: center;
+                    padding: 0;
+                    border-right: 1px solid $white-gray;
+                    span{
+                      font-size: 23px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+    }
+
+    .change-scenario-buttons{
+      margin: 2px auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      .button{
+        width: calc((100% - 30px)/4);
+        color: $dark;
+        line-height: 1em;
+        font-size: 0.8em;
+
+        text-align: center;
+        background-color: $white-gray;
+        border: 1px solid $light-gray;
+      }
+    }
+
+
+              .ion-record{
+                font-size: 10px;
+                color: $blue;
+              }
+
+
+    }
+
+
+
+
+//my spend dashboard pop-up view styles
+.mySpendDb-popup {
+    width: 95% !important;
+    min-height: 50% !important;
+    top: 45% !important;
+    right: 3%;
+    bottom: 5%;
+    border-radius: 5px;
+
+      .button{
+        display: block;
+        margin-left: 90%;
+        img{
+          width: 60%;
+          height: 60%;
+          margin-right: 15px;
+
+        }
+          }
+
+    ion-content{
+      .whyRed-popup{
+        padding: 0 20px;
+
+        h3{
+          top: 5%;
+          padding-top: 25px;
+          font-size: 16px;
+        }
+        h3, h4{
+          font-weight: 900;
+        }
+        .descr{
+          font-size: 14px;
+        }
+        .transactions{
+          .row{
+            padding: 0;
+            border-bottom: 1px solid $white-gray;
+
+            .col-15{
+              padding: 0;
+              .date{
+                font-size: 12px;
+                padding-top: 10px;
+                margin: 0;
+              }
+              .icon-box{
+                height: 30px;
+                width: 30px;
+                // background-color: $blue;
+                // border: 1px solid $blue;
+                border-radius: 50%;
+                .icon{
+                 font-size: 15px;
+                 color: white;
+                 position: relative;
+                 top: 4px;
+                 left: 8px;
+                 text-align: center;
+                }
+              }
+            }
+            .col-50{
+              padding: 0;
+              .title{
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: 900;
+              }
+            .sub-title{
+              font-size: 12px;
+              color: $light-gray;
+              line-height: 16px;
+            }
+            }
+            .col-20{
+              padding: 0;
+              .value{
+                font-size: 16px;
+                color: $red;
+                float: right;
+              }
+            }
+
+          }
+          .bottom-border{
+            border-bottom: 1px solid $white-gray;
+          }
+        }
+      }
+    }
+  }

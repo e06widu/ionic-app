@@ -1,0 +1,42 @@
+<!-- <ion-nav-bar class="bar bar-landing">
+</ion-nav-bar> -->
+
+<ion-view hide-back-button="true" >
+  <ion-content class="landing">
+    <div class="landing-page">
+      <div class="top-container">
+        <div class="cover-image">
+          <img src="img/landing.png" class="image">
+          <h2 class="title">Money Management</h2>
+          <ion-row>
+            <ion-col>
+              <h4>BUDGET LEFT</h4>
+            </ion-col>
+            <ion-col>
+              <h2 class="value">
+                <sup>$</sup>4,088</h2>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+
+      <div class="row text-center p-0">
+        <ul class="draglist">
+          <li class="border" ng-repeat="item in vm.moneyManagmentGridItems" ng-drop="true" ng-drop-success="vm.onDropComplete($index, $data,$event)"
+            ng-click="vm.navigate(item.navigate)" ng-style="{opacity:'{{item.isActive ?'':'0.5'}}'}">
+            <div class="icon-box" ng-drag="true" ng-drag-data="item">
+              <div class="icon-container">
+                <div class="icon-holder pt-2">
+                  <img src="{{item.icon}}">
+                </div>
+              </div>
+              <div class="icon-title pb-1">{{item.name}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>
